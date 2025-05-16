@@ -55,7 +55,7 @@ public class UserController {
             userDb.setEmail(user.getEmail());
             userDb.setUsername(user.getUsername());
             userDb.setPassword(user.getPassword());
-            ResponseEntity.ok(service.save(userDb));
+            return ResponseEntity.ok(service.save(userDb));
         }
         return ResponseEntity.notFound().build();
     }
