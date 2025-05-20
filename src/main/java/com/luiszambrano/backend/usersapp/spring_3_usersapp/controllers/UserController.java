@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +20,7 @@ import com.luiszambrano.backend.usersapp.spring_3_usersapp.models.entities.User;
 import com.luiszambrano.backend.usersapp.spring_3_usersapp.services.UserService;
 import org.springframework.web.bind.annotation.PutMapping;
 
+@CrossOrigin(origins = { "http://localhost:4200" })
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
@@ -32,7 +34,7 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> showById(@PathVariable Long id) {
+    public ResponseEntity<?> show(@PathVariable Long id) {
         Optional<User> userOptional = service.findById(id);
         if (userOptional.isPresent()) {
             return ResponseEntity.status(HttpStatus.OK).body(userOptional.orElseThrow());

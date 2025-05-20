@@ -19,25 +19,25 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional(readOnly = true)
     public List<User> findAll() {
-        return (List) repository.findAll();
+        return (List) this.repository.findAll();
     }
 
     @Override
     @Transactional(readOnly = true)
     public Optional<User> findById(Long id) {
-        return repository.findById(id);
+        return this.repository.findById(id);
     }
 
     @Override
     @Transactional
     public User save(User user) {
-        return repository.save(user);
+        return this.repository.save(user);
     }
 
     @Override
     @Transactional
     public void deleteById(Long id) {
-        repository.deleteById(id);
+        this.repository.deleteById(id);
     }
 
 }
